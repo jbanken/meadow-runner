@@ -1,10 +1,10 @@
-import { MeadowRunnerPage } from './app.po';
+import { AppPage } from './app.po';
 
 describe('meadow-runner App', () => {
-  let page: MeadowRunnerPage;
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new MeadowRunnerPage();
+    page = new AppPage();
   });
 
   it('should display welcome message', () => {
