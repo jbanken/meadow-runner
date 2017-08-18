@@ -1,14 +1,13 @@
 import {Injectable} from '@angular/core';
-import { Http, Response} from '@angular/http';
-import 'rxjs/add/operator/map';
+import { HttpClient} from '@angular/common/http';
 @Injectable()
 export class CustomerService{
 
-    constructor(private http: Http){}
+    constructor(private http: HttpClient){}
 
     list(){
 
-        return this.http.get("http://localhost:50099/home/about").map((res:Response) => res.json());
+        return this.http.get("http://localhost:50099/home/about");
 
         //return [{name:"joe"}];
     }
