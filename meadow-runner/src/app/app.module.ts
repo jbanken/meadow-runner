@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { CustomersComponent } from './customers/customers.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 
-import { CustomerService } from './services/customer.service';
+import { CustomerService } from './customers/customer.service';
 import { CustomHttpInterceptor } from './http.interceptor';
 
 const appRoutes: Routes = [

@@ -11,13 +11,13 @@ export class CustomHttpInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-
-    debugger;
-    req = req.clone({
+    console.log("Inside Interceptor");
+    /*req = req.clone({
       setHeaders: {
         'joe': 'banken'
       }
     });
+    */
 
     return next.handle(req);
 
