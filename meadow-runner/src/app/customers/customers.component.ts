@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CustomerService} from '../customers/customers.service';
-
+import { PhonePipe} from '../pipes/phone.pipe';
 @Component({
   selector: 'app-root',
   templateUrl: './customers.component.html',

@@ -5,9 +5,9 @@ import {Customer} from '../customers/models/customer';
 export class CustomerService{
     customers = [];
     constructor(private http: HttpClient){
-        this.customers.push(new Customer(1,"Joe","Banken","jbanken@meadowrunner.com","999-999-9999"));
-        this.customers.push(new Customer(2,"Mark","Petro","mpetro@meadowrunner.com","999-999-9999"));
-        this.customers.push(new Customer(3,"Mike","Sanders","msanders@meadowrunner.com","999-999-9999"));
+        this.customers.push(new Customer(1,"Joe","Banken","jbanken@meadowrunner.com","9999999999"));
+        this.customers.push(new Customer(2,"Mark","Petro","mpetro@meadowrunner.com","9999999999"));
+        this.customers.push(new Customer(3,"Mike","Sanders","msanders@meadowrunner.com","9999999999"));
     }
 
     list():Promise<any>{

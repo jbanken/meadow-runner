@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { PhonePipe} from './pipes/phone.pipe';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
     , CustomersComponent
     , CustomersShowComponent
     , ScheduleComponent
+    , PhonePipe
   ],
   imports: [
     BrowserModule
