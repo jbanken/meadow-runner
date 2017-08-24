@@ -6,14 +6,16 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CustomersComponent } from './customers/customers.component';
+import { CustomersShowComponent } from './customers/show/customers.show.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 
-import { CustomerService } from './customers/customer.service';
+import { CustomerService } from './customers/customers.service';
 import { CustomHttpInterceptor } from './http.interceptor';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'customers',      component: CustomersComponent },
+  { path: 'customers/:id',      component: CustomersShowComponent },
   { path: 'schedule',      component: ScheduleComponent }
   //{ path: '**', component: PageNotFoundComponent }
 ];
@@ -23,6 +25,7 @@ const appRoutes: Routes = [
     AppComponent
     , HomeComponent
     , CustomersComponent
+    , CustomersShowComponent
     , ScheduleComponent
   ],
   imports: [
