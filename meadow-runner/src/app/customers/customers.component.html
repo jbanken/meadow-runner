@@ -1,4 +1,4 @@
-<table class="table table-striped table-bordered">
+<!--<table class="table table-striped table-bordered">
     <thead>
         <th>Id</th>
         <th>First</th>
@@ -16,3 +16,9 @@
         </tr>
     </tbody>
 </table>
+
+-->
+<ng2-smart-table 
+    [settings]="settings" 
+    [source]="customers" 
+    (userRowSelect)="rowClick($event)"></ng2-smart-table>
