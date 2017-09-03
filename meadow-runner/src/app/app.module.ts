@@ -14,6 +14,8 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { CustomerService } from './customers/customers.service';
 import { CustomHttpInterceptor } from './http.interceptor';
 
+import {CalendarModule} from "ap-angular2-fullcalendar";
+
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'customers',      component: CustomersComponent },
@@ -39,6 +41,7 @@ const appRoutes: Routes = [
       //{ enableTracing: true } // <-- debugging purposes only
     )
     ,Ng2SmartTableModule
+    ,CalendarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptor, multi: true }
