@@ -1,36 +1,35 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import {CalendarComponent} from 'ap-angular2-fullcalendar';
+import {ScheduleService} from '../schedule/schedule.service';
 @Component({
   selector: 'app-root',
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.css']
 })
 export class ScheduleComponent{
-  calendarOptions:any = {
-     header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
-			},
-      fixedWeekCount : false,
-      defaultDate: '2016-09-12',
-      editable: true,
-      eventLimit: true, // allow "more" link when too many events
-      events: []
+  calendarOptions:any = {};
+  constructor(private scheduleService:ScheduleService){
+     this.calendarOptions = {
+      header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay'
+        },
+        fixedWeekCount : false,
+        defaultDate: '2016-09-12',
+        editable: true,
+        eventLimit: true, // allow "more" link when too many events
+        events: (start, end, timezone, callback)=> {
+          this.scheduleService.list()
+            .then(res => callback(res)); // just call callback
+        },
+        eventDrop: function(event, delta, revertFunc) {
+          console.log('Calendar Event Dropped');
+          console.log(event);
+      }
     };
-
-    onCalendarInit() {
-      console.log('Calendar initialized');
-      this.calendarOptions.events = [
-            {
-              title: 'All Day Event',
-              start: '2016-09-01'
-            },
-            {
-              title: 'Long Event',
-              start: '2016-09-07',
-              end: '2016-09-10'
-            }
-          ];
-    }
+  }
+  onCalendarInit() {
+    console.log('Calendar initialized');
+  }
 }

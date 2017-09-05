@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CustomersComponent } from './customers/customers.component';
 import { CustomersShowComponent } from './customers/show/customers.show.component';
+
+import { ScheduleService } from './schedule/schedule.service';
 import { ScheduleComponent } from './schedule/schedule.component';
 
 import { CustomerService } from './customers/customers.service';
@@ -46,6 +48,7 @@ const appRoutes: Routes = [
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptor, multi: true }
     ,CustomerService
+    ,ScheduleService
   ],
   bootstrap: [AppComponent]
 })
