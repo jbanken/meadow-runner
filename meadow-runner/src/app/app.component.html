@@ -1,13 +1,17 @@
 <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
     <div class="container">
-        <a class="navbar-brand">Meadow Runner</a>
+        <a class="navbar-brand" i18n>Meadow Runner</a>
         <ul class="nav navbar-nav" routerLinkActive="active">
-            <li class="nav-item"><a class="nav-link" routerLink="home">Home</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="customers">Customers</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="schedule">Schedule</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="home" i18n>Home</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="customers" i18n>Customers</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="schedule" i18n>Schedule</a></li>
         </ul>
     </div>
 </nav>
 <div class="container page">
   <router-outlet></router-outlet>
 </div>
+
+<select [ngModel]="selectedLanguage" (ngModelChange)="onChange($event)" name="language">
+    <option [ngValue]="i" *ngFor="let i of languages">{{i}}</option>
+</select>

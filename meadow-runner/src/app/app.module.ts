@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PhonePipe} from './pipes/phone.pipe';
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule
+    ,FormsModule
     ,HttpClientModule
     ,RouterModule.forRoot(
       appRoutes,
@@ -53,3 +55,6 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+//generate language file: ng xi18n --output-path src/i18n

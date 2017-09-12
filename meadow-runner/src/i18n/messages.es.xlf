@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="f1a6614beb170a95103b7c9fa163e62feeca3098" datatype="html">
+        <source>Meadow Runner</source>
+        <target>El Meadow Runner</target>
+      </trans-unit>
+      <trans-unit id="92eee6be6de0b11c924e3ab27db30257159c0a7c" datatype="html">
+        <source>Home</source>
+        <target>El Home</target>
+      </trans-unit>
+      <trans-unit id="dd5bba9d8d3f50c9a9928405a8b2f1d44547efc0" datatype="html">
+        <source>Customers</source>
+        <target>El Customers</target>
+      </trans-unit>
+      <trans-unit id="4a4f46a2dcec36bd5c8c371ceee55c2226dec27f" datatype="html">
+        <source>Schedule</source>
+        <target>El Schedule</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
