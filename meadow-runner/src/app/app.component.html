@@ -1,17 +1,37 @@
-<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-    <div class="container">
-        <a class="navbar-brand" i18n>Meadow Runner</a>
-        <ul class="nav navbar-nav" routerLinkActive="active">
-            <li class="nav-item"><a class="nav-link" routerLink="home" i18n>Home</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="customers" i18n>Customers</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="schedule" i18n>Schedule</a></li>
-        </ul>
-    </div>
-</nav>
-<div class="container page">
-  <router-outlet></router-outlet>
-</div>
 
-<select [ngModel]="selectedLanguage" (ngModelChange)="onChange($event)" name="language">
-    <option [ngValue]="i" *ngFor="let i of languages">{{i}}</option>
-</select>
+<div class="container main">
+    <div class="header clearfix">
+        <nav class="navbar navbar">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <a class="navbar-brand" href="#">Meadow Runner</a>
+                </div>
+                <ul class="nav navbar-nav nav-pills">
+                    <li class="nav-item ">
+                        <a class="nav-link" routerLink="home" i18n >Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="customers" i18n>Customers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="schedule" i18n>Schedule</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Joe Banken</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="page">
+        <router-outlet></router-outlet>
+    </div>
+
+    <!--<select [ngModel]="selectedLanguage" (ngModelChange)="onChange($event)" name="language">
+        <option [ngValue]="i" *ngFor="let i of languages">{{i}}</option>
+    </select>-->
+    <footer class="footer">
+        <p>© MeadowRunner 2017</p>
+    </footer>
+</div>
