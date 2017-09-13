@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CustomersComponent } from './customers/customers.component';
 import { CustomersShowComponent } from './customers/show/customers.show.component';
+import { CustomersEditComponent } from './customers/edit/customers.edit.component';
 
 import { ScheduleService } from './schedule/schedule.service';
 import { ScheduleComponent } from './schedule/schedule.component';
@@ -20,10 +21,12 @@ import { CustomHttpInterceptor } from './http.interceptor';
 import {CalendarModule} from "ap-angular2-fullcalendar";
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'customers',      component: CustomersComponent },
+  { path: 'home',               component: HomeComponent },
+  { path: 'customers',          component: CustomersComponent },
+  { path: 'customers/add',      component: CustomersEditComponent },
+  { path: 'customers/:id/edit',      component: CustomersEditComponent },
   { path: 'customers/:id',      component: CustomersShowComponent },
-  { path: 'schedule',      component: ScheduleComponent }
+  { path: 'schedule',           component: ScheduleComponent }
   //{ path: '**', component: PageNotFoundComponent }
 ];
 
@@ -33,6 +36,7 @@ const appRoutes: Routes = [
     , HomeComponent
     , CustomersComponent
     , CustomersShowComponent
+    , CustomersEditComponent
     , ScheduleComponent
     , PhonePipe
   ],

@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: []
 })
 export class CustomersShowComponent {
-    customer = {};
+    model = {};
 
     constructor(private customerService:CustomerService,private route: ActivatedRoute){
         
@@ -17,7 +17,7 @@ export class CustomersShowComponent {
         let id = this.route.snapshot.paramMap.get('id');
         var customerPromise = this.customerService.get(id);
         customerPromise.then(data=>{
-            this.customer = data[0];
+            this.model = data[0];
         });
 
     }

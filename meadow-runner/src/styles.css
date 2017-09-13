@@ -33,6 +33,7 @@ body {
   padding-top: 1.5rem;
   color: #777;
   border-top: .05rem solid #e5e5e5;
+  clear:both;
 }
 .nav-pills .nav-link:hover, .nav-pills .nav-link.active {
     color: #fff;
@@ -45,6 +46,23 @@ body {
 }
 div.header h3{
     display:inline-block;
+}
+div.record-header{
+  background-color:#e5e5e5;
+  padding:10px;
+  margin-bottom:8px;
+  border-radius:4px;
+}
+div.record-header h1{
+  font-size:28px;
+  margin:0px;
+}
+div.record-header h4{
+  font-size:14px;
+  margin:0px;
+}
+div.record-right-nav h4{
+  border-bottom:1px solid #e5e5e5;
 }
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/fullcalendar/dist/fullcalendar.min.css";

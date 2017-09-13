@@ -1,8 +1,30 @@
-
-<ul>
-    <li>{{ customer.Id }}</li>
-    <li>{{ customer.FirstName }}</li>
-    <li>{{ customer.LastName }}</li>
-    <li>{{ customer.Email }}</li>
-    <li>{{ customer.Phone }}</li>
-</ul>
+<div class="col-md-2">
+    <ul class="nav nav-pills nav-stacked" role="tablist">
+        <li class="active"><a>Overview</a></li>
+        <li><a>Notes</a></li>
+        <li><a>Files</a></li>       
+    </ul>
+</div>
+<div class="col-md-7">
+    <div class="form-group">
+        <label for="id" i18n>ID</label>
+        <span>{{model.Id}}</span>
+    </div>
+    <div class="form-group">
+        <label for="firstname" i18n>FirstName</label>
+        <span>{{model.FirstName}}</span>
+    </div>
+    <div class="form-group">
+        <label for="lastname" i18n>LastName</label>
+        <span>{{model.LastName}}</span>
+    </div>
+    <div class="form-group">
+        <label for="email" i18n>Email</label>
+        <span>{{model.Email}}</span>
+    </div>
+    <div class="form-group">
+        <label for="phone" i18n>Phone</label>
+        <span>{{model.Phone}}</span>
+    </div>
+    <a routerLink="/customers/{{model.Id}}/edit" i18n class="btn btn-primary" role="button">Edit</a>
+</div>
