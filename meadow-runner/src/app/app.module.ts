@@ -5,28 +5,30 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PhonePipe} from './pipes/phone.pipe';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { CustomHttpInterceptor } from './http.interceptor';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { CustomersComponent } from './customers/customers.component';
-import { CustomersShowComponent } from './customers/show/customers.show.component';
-import { CustomersEditComponent } from './customers/edit/customers.edit.component';
 
+import { CalendarModule } from "ap-angular2-fullcalendar";
 import { ScheduleService } from './schedule/schedule.service';
 import { ScheduleComponent } from './schedule/schedule.component';
 
+import { CustomersComponent } from './customers/customers.component';
+import { CustomersShowComponent } from './customers/show/customers.show.component';
+import { CustomersEditComponent } from './customers/edit/customers.edit.component';
 import { CustomerService } from './customers/customers.service';
-import { CustomHttpInterceptor } from './http.interceptor';
 
-import {CalendarModule} from "ap-angular2-fullcalendar";
-
+import { TrainersComponent } from './trainers/trainers.component';
+import { TrainerService } from './trainers/trainers.service';
 const appRoutes: Routes = [
   { path: 'home',               component: HomeComponent },
   { path: 'customers',          component: CustomersComponent },
   { path: 'customers/add',      component: CustomersEditComponent },
   { path: 'customers/:id/edit',      component: CustomersEditComponent },
   { path: 'customers/:id',      component: CustomersShowComponent },
-  { path: 'schedule',           component: ScheduleComponent }
+  { path: 'schedule',           component: ScheduleComponent },
+  { path: 'trainers',          component: TrainersComponent },
   //{ path: '**', component: PageNotFoundComponent }
 ];
 
@@ -39,6 +41,7 @@ const appRoutes: Routes = [
     , CustomersEditComponent
     , ScheduleComponent
     , PhonePipe
+    , TrainersComponent
   ],
   imports: [
     BrowserModule
@@ -55,6 +58,7 @@ const appRoutes: Routes = [
     { provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptor, multi: true }
     ,CustomerService
     ,ScheduleService
+    ,TrainerService
   ],
   bootstrap: [AppComponent]
 })
