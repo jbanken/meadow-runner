@@ -20,15 +20,19 @@ import { CustomersEditComponent } from './customers/edit/customers.edit.componen
 import { CustomerService } from './customers/customers.service';
 
 import { TrainersComponent } from './trainers/trainers.component';
+import { TrainersShowComponent } from './trainers/show/trainers.show.component';
 import { TrainerService } from './trainers/trainers.service';
 const appRoutes: Routes = [
   { path: 'home',               component: HomeComponent },
   { path: 'customers',          component: CustomersComponent },
   { path: 'customers/add',      component: CustomersEditComponent },
-  { path: 'customers/:id/edit',      component: CustomersEditComponent },
+  { path: 'customers/:id/edit', component: CustomersEditComponent },
   { path: 'customers/:id',      component: CustomersShowComponent },
   { path: 'schedule',           component: ScheduleComponent },
-  { path: 'trainers',          component: TrainersComponent },
+  { path: 'trainers',           component: TrainersComponent },
+  { path: 'trainers/add',       component: TrainersShowComponent },
+  { path: 'trainers/:id/edit',  component: TrainersShowComponent },
+  { path: 'trainers/:id',       component: TrainersShowComponent },
   //{ path: '**', component: PageNotFoundComponent }
 ];
 
@@ -42,6 +46,7 @@ const appRoutes: Routes = [
     , ScheduleComponent
     , PhonePipe
     , TrainersComponent
+    , TrainersShowComponent
   ],
   imports: [
     BrowserModule
