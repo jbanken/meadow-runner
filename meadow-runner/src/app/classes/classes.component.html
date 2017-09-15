@@ -1,0 +1,8 @@
+
+<div class="pull-right">
+    <a routerLink="/classes/add" i18n class="btn btn-success" role="button">Add a class</a>
+</div>
+<ng2-smart-table 
+    [settings]="settings" 
+    [source]="classes" 
+    (userRowSelect)="rowClick($event)"></ng2-smart-table>

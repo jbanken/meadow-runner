@@ -1,0 +1,16 @@
+
+<form #classForm = "ngForm" (ngSubmit)="onSubmit(classForm.value)">
+
+    <div class="form-group">
+        <label for="id" i18n>ID</label>
+        <input type="text" class="form-control" id="id" name="id" [(ngModel)]="model.Id"/>
+    </div>
+    <div class="form-group">
+        <label for="name" i18n>Name</label>
+        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.Name"/>
+    </div>
+    
+    <button type="submit" value=”submit” class="btn btn-success">Submit</button>
+
+</form>
+ 
