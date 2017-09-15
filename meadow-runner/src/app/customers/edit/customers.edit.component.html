@@ -1,14 +1,17 @@
-<div class="col-md-2">
-    <ul class="nav nav-pills nav-stacked" role="tablist">
+<div class="col-md-2" >
+    <ul class="nav nav-pills nav-stacked" role="tablist" *ngIf="model.Id">
         <li class="active"><a>Overview</a></li>
+        <li><a>Calendar</a></li>
+        <li><a>Sessions</a></li>
+        <li><a>Trainers</a></li>
         <li><a>Notes</a></li>
         <li><a>Files</a></li>
         <li><a>Invoices</a></li>
-        <li><a>Payments</a></li>      
+        <li><a>Payments</a></li>   
     </ul>
 </div>
 <div class="col-md-8">
-    <div class="record-header">
+    <div class="record-header" *ngIf="model.Id">
         <div class="row">
             <div class="col-md-1"><img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user.png" width="50px"/></div>
             <div class="col-md-11">
@@ -45,7 +48,7 @@
     </form>
  
 </div>
-<div class="col-md-2 record-right-nav">
+<div class="col-md-2 record-right-nav" *ngIf="model.Id">
     <h4>Quick Links</h4>
     <ul class="list-unstyled">
         <li><a>Book a session(s)</a></li>
