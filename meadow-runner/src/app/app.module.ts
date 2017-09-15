@@ -29,6 +29,11 @@ import { ClassesShowComponent } from './classes/show/classes.show.component';
 import { ClassesEditComponent } from './classes/edit/classes.edit.component';
 import { ClassService } from './classes/classes.service';
 
+import { ServicesComponent } from './services/services.component';
+import { ServicesShowComponent } from './services/show/services.show.component';
+import { ServicesEditComponent } from './services/edit/services.edit.component';
+import { ServiceService } from './services/services.service';
+
 const appRoutes: Routes = [
   { path: 'home',               component: HomeComponent },
   { path: 'customers',          component: CustomersComponent },
@@ -44,6 +49,10 @@ const appRoutes: Routes = [
   { path: 'classes/add',        component: ClassesEditComponent },
   { path: 'classes/:id/edit',   component: ClassesEditComponent },
   { path: 'classes/:id',        component: ClassesShowComponent },
+  { path: 'services',           component: ServicesComponent },
+  { path: 'services/add',       component: ServicesEditComponent },
+  { path: 'services/:id/edit',  component: ServicesEditComponent },
+  { path: 'services/:id',       component: ServicesShowComponent },
   //{ path: '**', component: PageNotFoundComponent }
 ];
 
@@ -62,6 +71,9 @@ const appRoutes: Routes = [
     , ClassesComponent
     , ClassesShowComponent
     , ClassesEditComponent
+    , ServicesComponent
+    , ServicesShowComponent
+    , ServicesEditComponent
   ],
   imports: [
     BrowserModule
@@ -80,6 +92,7 @@ const appRoutes: Routes = [
     ,ScheduleService
     ,TrainerService
     ,ClassService
+    ,ServiceService
   ],
   bootstrap: [AppComponent]
 })
