@@ -5,9 +5,9 @@ import {Event} from '../schedule/models/event';
 export class ScheduleService{
     events = [];
     constructor(private http: HttpClient){
-        this.events.push(new Event("Event 1","2016-09-01",null,false));
-        this.events.push(new Event("Event 2","2016-09-01","2016-09-01",false));
-        this.events.push(new Event("Event 3","2016-09-03","2016-09-04",false));
+        this.events.push(new Event(1,"Event 1","2016-09-01",null,false,"blue"));
+        this.events.push(new Event(2,"Event 2","2016-09-01","2016-09-01",false,"blue"));
+        this.events.push(new Event(3,"Event 3","2016-09-03","2016-09-04",false,"blue"));
     }
 
     list():Promise<any>{

@@ -1,3 +1,18 @@
+<div class="[ form-group ]">
+    <span *ngFor="let trainer of trainers">
+        <input type="checkbox" name="trainers" id="fancy-checkbox-{{trainer.Id}}" value="{{trainer.Id}}" autocomplete="off" (click)="onTrainerClicked(trainer.Id)"/>
+        <div class="[ btn-group ]">
+            <label for="fancy-checkbox-{{trainer.Id}}" class="[ btn btn-primary ]">
+                <span class="[ glyphicon glyphicon-ok ]"></span>
+                <span> </span>
+            </label>
+            <label for="fancy-checkbox-{{trainer.Id}}" class="[ btn btn-default active ]">
+                {{trainer.FirstName}} {{trainer.LastName}}
+            </label>
+        </div>
+    </span>
+</div>
 <angular2-fullcalendar 
+id="myCalendar"
 [options]="calendarOptions" 
 (initialized)="onCalendarInit($event)" ></angular2-fullcalendar>

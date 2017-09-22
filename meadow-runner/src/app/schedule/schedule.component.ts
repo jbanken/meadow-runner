@@ -1,6 +1,9 @@
 import { Component} from '@angular/core';
 import {CalendarComponent} from 'ap-angular2-fullcalendar';
 import {ScheduleService} from '../schedule/schedule.service';
+import {TrainerService} from '../trainers/trainers.service';
+import {Event} from '../schedule/models/event';
+import * as $ from 'jquery';
 @Component({
   selector: 'app-root',
   templateUrl: './schedule.component.html',
@@ -8,7 +11,15 @@ import {ScheduleService} from '../schedule/schedule.service';
 })
 export class ScheduleComponent{
   calendarOptions:any;
-  constructor(private scheduleService:ScheduleService){
+  trainers:any[] = [];
+  constructor(private scheduleService:ScheduleService,private trainerService:TrainerService){
+
+    //this.trainers = [{id:1,name:"Joe Banken"},{id:2,name:"Mark Petro"},{idkey:2,name:"Mike Sanders"}];
+    var trainersPromise = this.trainerService.list();
+        trainersPromise.then(data=>{
+            this.trainers = data;
+        });
+
      this.calendarOptions = {
       header: {
           left: 'prev,next today',
@@ -31,5 +42,40 @@ export class ScheduleComponent{
   }
   onCalendarInit(event:any) {
     console.log('Calendar initialized');
+  }
+
+  onTrainerClicked(trainerID:number){
+    console.log("Show Trainers event");
+    let events = [];
+
+    let checked = $('#fancy-checkbox-'+trainerID+':checkbox:checked').length >= 1 ? true :false;//todo don't use jquery;
+
+    if(checked){
+      if(trainerID == 1){
+          events.push(new Event(101,"Joe Available","2016-09-05",null,false,"green"));
+          events.push(new Event(102,"Joe Available","2016-09-07",null,false,"green"));
+          events.push(new Event(103,"Joe Available","2016-09-09",null,false,"green"));
+      }else if (trainerID == 2){
+          events.push(new Event(201,"Mark Available","2016-09-06",null,false,"green"));
+          events.push(new Event(202,"Mark Available","2016-09-08",null,false,"green"));
+      }else if (trainerID == 3){
+          events.push(new Event(301,"Mike Available","2016-09-05",null,false,"green"));
+          events.push(new Event(302,"Mike Available","2016-09-06",null,false,"green"));
+      }
+      this.calendarOptions.events = events;
+      $('#myCalendar').fullCalendar('renderEvents', events, true);
+    }else{
+      if(trainerID == 1){
+        $('#myCalendar').fullCalendar('removeEvents',101);
+        $('#myCalendar').fullCalendar('removeEvents',102);
+        $('#myCalendar').fullCalendar('removeEvents',103);
+      }else if (trainerID == 2){
+        $('#myCalendar').fullCalendar('removeEvents',201);
+        $('#myCalendar').fullCalendar('removeEvents',202);
+      }else if (trainerID == 3){
+        $('#myCalendar').fullCalendar('removeEvents',301);
+        $('#myCalendar').fullCalendar('removeEvents',302);
+      }
+    }
   }
 }
