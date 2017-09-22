@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { ClassService} from '../../classes/classes.service';
 import { ActivatedRoute,Router } from '@angular/router';
+import { Class} from '../../classes/models/class';
 @Component({
   selector: 'app-root',
   templateUrl: './classes.edit.component.html',
   styleUrls: []
 })
 export class ClassesEditComponent {
-    model = {Id:"",Name:""};
+    model:Class;
 
     constructor(private classesService:ClassService,private route: ActivatedRoute,private router:Router){
         

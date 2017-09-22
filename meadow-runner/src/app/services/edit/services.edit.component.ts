@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { ServiceService} from '../../services/services.service';
 import { ActivatedRoute,Router } from '@angular/router';
+import { Service} from '../../services/models/service';
 @Component({
   selector: 'app-root',
   templateUrl: './services.edit.component.html',
   styleUrls: []
 })
 export class ServicesEditComponent {
-    model = {Id:"",Name:""};
+    model:Service;
 
     constructor(private servicesService:ServiceService,private route: ActivatedRoute,private router:Router){
         

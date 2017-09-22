@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { CustomerService} from '../../customers/customers.service';
 import { ActivatedRoute } from '@angular/router';
+import { Customer} from '../../customers/models/customer';
 @Component({
   selector: 'app-root',
   templateUrl: './customers.show.component.html',
   styleUrls: []
 })
 export class CustomersShowComponent {
-    model = {};
+    model:Customer;
 
     constructor(private customerService:CustomerService,private route: ActivatedRoute){
         

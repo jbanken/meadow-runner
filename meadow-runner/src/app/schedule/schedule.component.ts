@@ -7,7 +7,7 @@ import {ScheduleService} from '../schedule/schedule.service';
   styleUrls: ['./schedule.component.css']
 })
 export class ScheduleComponent{
-  calendarOptions:any = {};
+  calendarOptions:any;
   constructor(private scheduleService:ScheduleService){
      this.calendarOptions = {
       header: {
@@ -29,7 +29,7 @@ export class ScheduleComponent{
       }
     };
   }
-  onCalendarInit() {
+  onCalendarInit(event:any) {
     console.log('Calendar initialized');
   }
 }

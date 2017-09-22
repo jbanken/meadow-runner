@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { CustomerService} from '../../customers/customers.service';
 import { ActivatedRoute,Router } from '@angular/router';
+import { Customer} from '../../customers/models/customer';
 @Component({
   selector: 'app-root',
   templateUrl: './customers.edit.component.html',
   styleUrls: []
 })
 export class CustomersEditComponent {
-    model = {Id:"",FirstName:"",LastName:"",Email:"",Phone:""};
+    model:Customer;
 
     constructor(private customerService:CustomerService,private route: ActivatedRoute,private router:Router){
         
