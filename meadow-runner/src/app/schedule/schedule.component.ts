@@ -3,6 +3,7 @@ import {CalendarComponent} from 'ap-angular2-fullcalendar';
 import {ScheduleService} from '../schedule/schedule.service';
 import {TrainerService} from '../trainers/trainers.service';
 import {Event} from '../schedule/models/event';
+import {EventType} from '../schedule/models/eventType';
 import * as $ from 'jquery';
 @Component({
   selector: 'app-root',
@@ -12,12 +13,17 @@ import * as $ from 'jquery';
 export class ScheduleComponent{
   calendarOptions:any;
   trainers:any[] = [];
+  eventTypes:any[] = [];
   constructor(private scheduleService:ScheduleService,private trainerService:TrainerService){
 
-    //this.trainers = [{id:1,name:"Joe Banken"},{id:2,name:"Mark Petro"},{idkey:2,name:"Mike Sanders"}];
-    var trainersPromise = this.trainerService.list();
+     var trainersPromise = this.trainerService.list();
         trainersPromise.then(data=>{
             this.trainers = data;
+        });
+
+     var eventTypesPromise = this.scheduleService.listEventTypes();
+        eventTypesPromise.then(data=>{
+            this.eventTypes = data;
         });
 
      this.calendarOptions = {
@@ -44,11 +50,14 @@ export class ScheduleComponent{
     console.log('Calendar initialized');
   }
 
-  onTrainerClicked(trainerID:number){
-    console.log("Show Trainers event");
-    let events = [];
+  onEventTypeClicked(eventTypeId:number){
+    console.log('EventType Clicked');
+  }
 
-    let checked = $('#fancy-checkbox-'+trainerID+':checkbox:checked').length >= 1 ? true :false;//todo don't use jquery;
+  onTrainerClicked(trainerID:number){
+    console.log('Trainer Clicked');
+    let events = [];
+    let checked = $('#trainer-'+trainerID+':checkbox:checked').length >= 1 ? true :false;//todo don't use jquery;
 
     if(checked){
       if(trainerID == 1){

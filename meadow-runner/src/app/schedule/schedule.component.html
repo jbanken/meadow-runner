@@ -1,16 +1,34 @@
 <div class="[ form-group ]">
-    <span *ngFor="let trainer of trainers">
-        <input type="checkbox" name="trainers" id="fancy-checkbox-{{trainer.Id}}" value="{{trainer.Id}}" autocomplete="off" (click)="onTrainerClicked(trainer.Id)"/>
-        <div class="[ btn-group ]">
-            <label for="fancy-checkbox-{{trainer.Id}}" class="[ btn btn-primary ]">
-                <span class="[ glyphicon glyphicon-ok ]"></span>
-                <span> </span>
-            </label>
-            <label for="fancy-checkbox-{{trainer.Id}}" class="[ btn btn-default active ]">
-                {{trainer.FirstName}} {{trainer.LastName}}
-            </label>
-        </div>
-    </span>
+    <ul class="list-unstyled">
+        <li *ngFor="let trainer of trainers">
+            <input type="checkbox" name="trainers" id="trainer-{{trainer.Id}}" value="{{trainer.Id}}" autocomplete="off" (click)="onTrainerClicked(trainer.Id)"/>
+            <div class="[ btn-group ]">
+                <label for="trainer-{{trainer.Id}}" class="[ btn btn-primary ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                <label for="trainer-{{trainer.Id}}" class="[ btn btn-default active ]">
+                    {{trainer.FirstName}} {{trainer.LastName}}
+                </label>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="[ form-group ]">
+    <ul class="list-unstyled">
+        <li *ngFor="let eventType of eventTypes">
+            <input type="checkbox" name="eventTypes" id="eventType-{{eventType.Id}}" value="{{eventType.Id}}" autocomplete="off" (click)="onEventTypeClicked(eventType.Id)"/>
+            <div class="[ btn-group ]">
+                <label for="eventType-{{eventType.Id}}" class="[ btn btn-primary ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                <label for="eventType-{{eventType.Id}}" class="[ btn btn-default active ]">
+                    {{eventType.Name}}
+                </label>
+            </div>
+        </li>
+    </ul>
 </div>
 <angular2-fullcalendar 
 id="myCalendar"

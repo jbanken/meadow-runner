@@ -5,5 +5,7 @@ export class Event {
     public start: string,
     public end: string,
     public hasTime: boolean,
-    public backgroundColor:string) { }
+    public backgroundColor:string
+
+) { }
 }
