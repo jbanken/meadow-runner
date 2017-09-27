@@ -10,7 +10,7 @@ import { CustomHttpInterceptor } from './http.interceptor';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
-import { CalendarModule } from "ap-angular2-fullcalendar";
+import { CalendarModule } from 'ap-angular2-fullcalendar';
 import { ScheduleService } from './schedule/schedule.service';
 import { ScheduleComponent } from './schedule/schedule.component';
 
@@ -21,6 +21,7 @@ import { CustomerService } from './customers/customers.service';
 
 import { TrainersComponent } from './trainers/trainers.component';
 import { TrainersShowComponent } from './trainers/show/trainers.show.component';
+import { TrainersScheduleComponent } from './trainers/schedule/trainers.schedule.component';
 import { TrainersEditComponent } from './trainers/edit/trainers.edit.component';
 import { TrainerService } from './trainers/trainers.service';
 
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
   { path: 'trainers/add',       component: TrainersEditComponent },
   { path: 'trainers/:id/edit',  component: TrainersEditComponent },
   { path: 'trainers/:id',       component: TrainersShowComponent },
+  { path: 'trainers/:id/schedule',  component: TrainersScheduleComponent },
   { path: 'classes',            component: ClassesComponent },
   { path: 'classes/add',        component: ClassesEditComponent },
   { path: 'classes/:id/edit',   component: ClassesEditComponent },
@@ -53,7 +55,7 @@ const appRoutes: Routes = [
   { path: 'services/add',       component: ServicesEditComponent },
   { path: 'services/:id/edit',  component: ServicesEditComponent },
   { path: 'services/:id',       component: ServicesShowComponent },
-  //{ path: '**', component: PageNotFoundComponent }
+  // { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -68,6 +70,7 @@ const appRoutes: Routes = [
     , TrainersComponent
     , TrainersShowComponent
     , TrainersEditComponent
+    , TrainersScheduleComponent
     , ClassesComponent
     , ClassesShowComponent
     , ClassesEditComponent
@@ -77,26 +80,26 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule
-    ,FormsModule
-    ,HttpClientModule
-    ,RouterModule.forRoot(
+    , FormsModule
+    , HttpClientModule
+    , RouterModule.forRoot(
       appRoutes,
-      //{ enableTracing: true } // <-- debugging purposes only
+      // { enableTracing: true } // <-- debugging purposes only
     )
-    ,Ng2SmartTableModule
-    ,CalendarModule
+    , Ng2SmartTableModule
+    , CalendarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptor, multi: true }
-    ,CustomerService
-    ,ScheduleService
-    ,TrainerService
-    ,ClassService
-    ,ServiceService
+    , CustomerService
+    , ScheduleService
+    , TrainerService
+    , ClassService
+    , ServiceService
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
 
-//generate language file: ng xi18n --output-path src/i18n
+// generate language file: ng xi18n --output-path src/i18n

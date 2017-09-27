@@ -1,0 +1,53 @@
+<h3>Setup Rule</h3>
+<form class="form-horizontal">
+    <fieldset>
+        <div class="form-group">
+            <!-- Name -->
+            <label for="ts-name" class="col-md-1 control-label">Name:</label>
+            <div class="col-md-3">
+                <input type="text" class="form-control" id="ts-name" />
+            </div>
+
+            <!-- Effective Date -->
+            <label for="ts-effective" class="col-md-1 control-label">Effective:</label>
+            <div class="col-md-3">
+                <input type="date" class="form-control" id="ts-effective" />
+            </div>
+
+            <!-- To Date -->
+            <label for="ts-to" class="col-md-1 control-label">To:</label>
+            <div class="col-md-3">
+                <input type="date" class="form-control" id="ts-to" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <!-- Repeat Radio Buttons -->
+            <label class="col-md-1 control-label">Repeat:</label>
+                <label class="radio-inline control-label col-md-1">
+                <input type="radio" id="ts-forever" name="repeat" value="Forever">
+                Forever
+            </label>
+
+            <label class="col-md-2 radio-inline control-label">
+            <input type="radio" id="ts-for" name="repeat" value="For">
+            For
+            </label>
+
+            <div class="col-md-2">
+                <div class="input-group">
+                <input value="1" type="number" class="form-control" id="ts-weeks" name="weeks" min="1" max="100" /><span class="input-group-addon">week(s)</span>
+                </div>
+            </div>
+        </div>        
+
+        <div class="form-group">
+            <label class="col-md-1 control-label">Drag:</label>
+            <div class="col-md-7">
+                <div class="col-md-3 btn btn-primary cal-event">Free</div>
+                <div class="col-md-offset-1 col-md-3 btn btn-primary cal-event">Busy</div>
+            </div>
+        </div>
+    </fieldset>
+    <div id='calendar'></div>
+</form>
