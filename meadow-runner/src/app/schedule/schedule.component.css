@@ -20,6 +20,33 @@
     display: none;   
 }
 
+
+
 a.available & .fc-event{
     background-color:green !important;
+}
+
+.sidenav-fab-container md-sidenav {
+  max-width: 300px;
+}
+
+.sidenav-fab-container .mat-sidenav-content,
+.sidenav-fab-container md-sidenav {
+  display: flex;
+  overflow: visible;
+}
+
+.scrolling-content {
+  overflow: auto;
+  height: 100%;
+}
+
+.fab.mat-mini-fab {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+}
+.sidenav{
+    background-color: #fff !important;
+    padding:5px;
 }

@@ -6,6 +6,7 @@ import {EventType} from '../schedule/models/eventType';
 export class ScheduleService{
     events = [];
     eventTypes = [];
+
     constructor(private http: HttpClient){
         this.events.push(new Event(1,"Event 1","2016-09-01",null,false,"blue"));
         this.events.push(new Event(2,"Event 2","2016-09-01","2016-09-01",false,"blue"));
