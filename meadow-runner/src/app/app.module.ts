@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
@@ -6,6 +7,37 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PhonePipe} from './pipes/phone.pipe';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { CustomHttpInterceptor } from './http.interceptor';
+import 'hammerjs';
+import {
+  //MdAutocompleteModule,
+  MdButtonModule,
+  MdButtonToggleModule,
+  MdCardModule,
+  MdCheckboxModule,
+  //MdChipsModule,
+  //MdDatepickerModule,
+  MdDialogModule,
+  //MdExpansionModule,
+  MdGridListModule,
+  MdIconModule,
+  MdInputModule,
+  MdListModule,
+  MdMenuModule,
+  //MdNativeDateModule,
+  MdProgressBarModule,
+  //MdProgressSpinnerModule,
+  MdRadioModule,
+  MdRippleModule,
+  MdSelectModule,
+  MdSidenavModule,
+  MdSliderModule,
+  MdSlideToggleModule,
+  MdSnackBarModule,
+  MdTabsModule,
+  MdToolbarModule,
+  MdTooltipModule,
+  MaterialModule
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -13,6 +45,7 @@ import { HomeComponent } from './home/home.component';
 import { CalendarModule } from "ap-angular2-fullcalendar";
 import { ScheduleService } from './schedule/schedule.service';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { ScheduleSideBarComponent } from './schedule/schedulesidebar.component';
 
 import { CustomersComponent } from './customers/customers.component';
 import { CustomersShowComponent } from './customers/show/customers.show.component';
@@ -64,6 +97,7 @@ const appRoutes: Routes = [
     , CustomersShowComponent
     , CustomersEditComponent
     , ScheduleComponent
+    , ScheduleSideBarComponent
     , PhonePipe
     , TrainersComponent
     , TrainersShowComponent
@@ -77,6 +111,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule
+    ,BrowserAnimationsModule
     ,FormsModule
     ,HttpClientModule
     ,RouterModule.forRoot(
@@ -85,6 +120,7 @@ const appRoutes: Routes = [
     )
     ,Ng2SmartTableModule
     ,CalendarModule
+    ,MaterialModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptor, multi: true }
@@ -94,7 +130,37 @@ const appRoutes: Routes = [
     ,ClassService
     ,ServiceService
   ],
-  bootstrap: [AppComponent]
+  exports:[
+    //MdAutocompleteModule,
+    MdButtonModule,
+    MdButtonToggleModule,
+    MdCardModule,
+    MdCheckboxModule,
+    //MdChipsModule,
+    //MdDatepickerModule,
+    MdDialogModule,
+    //MdExpansionModule,
+    MdGridListModule,
+    MdIconModule,
+    MdInputModule,
+    MdListModule,
+    MdMenuModule,
+    MdProgressBarModule,
+    //MdProgressSpinnerModule,
+    MdRadioModule,
+    MdRippleModule,
+    MdSelectModule,
+    MdSidenavModule,
+    MdSlideToggleModule,
+    MdSliderModule,
+    MdSnackBarModule,
+    MdTabsModule,
+    MdToolbarModule,
+    MdTooltipModule,
+    MaterialModule
+    //MdNativeDateModule
+    ],
+  bootstrap: [AppComponent,ScheduleSideBarComponent]
 })
 export class AppModule { }
 
