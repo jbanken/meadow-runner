@@ -8,6 +8,23 @@ import 'jquery-ui-dist/jquery-ui';
 })
 
 export class TrainersScheduleComponent implements OnInit, AfterViewInit {
+    isEventOverDiv(x, y) {
+        const deleteEvent = $( '#deleteEvent' );
+        const offset = deleteEvent.offset();
+        (<any>offset).right = deleteEvent.outerWidth() + offset.left;
+        (<any>offset).bottom = deleteEvent.outerHeight() + offset.top;
+
+        x = x + window.scrollX;
+        y = y + window.scrollY;
+
+        // Compare
+        if (x >= offset.left
+            && y >= offset.top
+            && x <= (<any>offset).right
+            && y <= (<any>offset).bottom) { return true; }
+        return false;
+
+    }
 
     ngAfterViewInit() {
         $('.cal-event').each(function() {
@@ -34,6 +51,12 @@ export class TrainersScheduleComponent implements OnInit, AfterViewInit {
             },
             editable: true,
             droppable: true, // this allows things to be dropped onto the calendar
+            dragRevertDuration: 0,
+            eventDragStop: ( event, jsEvent, ui, view ) => {
+                if (this.isEventOverDiv(jsEvent.clientX, jsEvent.clientY)) {
+                    $('#calendar').fullCalendar('removeEvents', event._id);
+                }
+            }
         });
     }
 
