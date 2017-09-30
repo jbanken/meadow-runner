@@ -2,6 +2,11 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import * as $ from 'jquery';
 import 'jquery-ui-dist/jquery-ui';
 
+(window as any).jQuery = $;
+declare var require: any;
+require('jquery-ui-touch-punch');
+// import 'jquery-ui-touch-punch';
+
 @Component({
     selector: 'app-root',
     templateUrl: 'trainers.schedule.component.html'
@@ -53,7 +58,18 @@ export class TrainersScheduleComponent implements OnInit, AfterViewInit {
             droppable: true, // this allows things to be dropped onto the calendar
             dragRevertDuration: 0,
             eventDragStop: ( event, jsEvent, ui, view ) => {
-                if (this.isEventOverDiv(jsEvent.clientX, jsEvent.clientY)) {
+                let x;
+                let y;
+
+                if (jsEvent.type === 'touchend') {
+                    x = (<any>jsEvent).changedTouches[0].clientX;
+                    y = (<any>jsEvent).changedTouches[0].clientY;
+                } else {
+                    x = jsEvent.clientX;
+                    y = jsEvent.clientY;
+                }
+
+                if (this.isEventOverDiv(x, y)) {
                     $('#calendar').fullCalendar('removeEvents', event._id);
                 }
             }
