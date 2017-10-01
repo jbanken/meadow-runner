@@ -5,7 +5,6 @@ import 'jquery-ui-dist/jquery-ui';
 (window as any).jQuery = $;
 declare var require: any;
 require('jquery-ui-touch-punch');
-// import 'jquery-ui-touch-punch';
 
 @Component({
     selector: 'app-root',
@@ -13,24 +12,6 @@ require('jquery-ui-touch-punch');
 })
 
 export class TrainersScheduleComponent implements OnInit, AfterViewInit {
-    isEventOverDiv(x, y) {
-        const deleteEvent = $( '#deleteEvent' );
-        const offset = deleteEvent.offset();
-        (<any>offset).right = deleteEvent.outerWidth() + offset.left;
-        (<any>offset).bottom = deleteEvent.outerHeight() + offset.top;
-
-        x = x + window.scrollX;
-        y = y + window.scrollY;
-
-        // Compare
-        if (x >= offset.left
-            && y >= offset.top
-            && x <= (<any>offset).right
-            && y <= (<any>offset).bottom) { return true; }
-        return false;
-
-    }
-
     ngAfterViewInit() {
         $('.cal-event').each(function() {
             // store data so the calendar knows to render an event upon drop
@@ -39,6 +20,7 @@ export class TrainersScheduleComponent implements OnInit, AfterViewInit {
                 stick: true, // maintain when user navigates (see docs on the renderEvent method)
                 duration: '01:00'
             });
+
             // make the event draggable using jQuery UI
             (<any>$(this)).draggable({
                 zIndex: 999,
@@ -62,18 +44,42 @@ export class TrainersScheduleComponent implements OnInit, AfterViewInit {
                 let y;
 
                 if (jsEvent.type === 'touchend') {
+                    // x and y coordinates for touch event
                     x = (<any>jsEvent).changedTouches[0].clientX;
                     y = (<any>jsEvent).changedTouches[0].clientY;
                 } else {
+                    // x and y coordinates for mouse event
                     x = jsEvent.clientX;
                     y = jsEvent.clientY;
                 }
 
                 if (this.isEventOverDiv(x, y)) {
+                    // Remove the event from the calendar if it is thrown in the event trash can
                     $('#calendar').fullCalendar('removeEvents', event._id);
                 }
             }
         });
+    }
+
+    isEventOverDiv(x, y) {
+        const eventTrashCan = $( '#event-trash-can' );
+        const offset = eventTrashCan.offset();
+        (<any>offset).right = eventTrashCan.outerWidth() + offset.left;
+        (<any>offset).bottom = eventTrashCan.outerHeight() + offset.top;
+
+        // Adjust for scrolling
+        x = x + window.scrollX;
+        y = y + window.scrollY;
+
+        // Are the coordinates of where the event was dropped in the event trash can?
+        if (x >= offset.left
+            && y >= offset.top
+            && x <= (<any>offset).right
+            && y <= (<any>offset).bottom) {
+            return true;
+        }
+
+        return false;
     }
 
     ngOnInit() { }

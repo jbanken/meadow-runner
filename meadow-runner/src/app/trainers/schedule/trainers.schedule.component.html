@@ -23,32 +23,37 @@
 
         <div class="form-group">
             <!-- Repeat Radio Buttons -->
+            <!-- Forever -->
             <label class="col-md-1 control-label">Repeat:</label>
                 <label class="radio-inline control-label col-md-1">
-                <input type="radio" id="ts-forever" name="repeat" value="Forever">
+                <input type="radio" id="ts-forever" [(ngModel)]="repeatOption" name="repeat" value="Forever">
                 Forever
             </label>
 
+            <!-- For x week(s) -->
             <label class="col-md-2 radio-inline control-label">
-            <input type="radio" id="ts-for" name="repeat" value="For">
+            <input type="radio" id="ts-for" [(ngModel)]="repeatOption" name="repeat" value="For">
             For
             </label>
 
             <div class="col-md-2">
                 <div class="input-group">
-                <input value="1" type="number" class="form-control" id="ts-weeks" name="weeks" min="1" max="100" /><span class="input-group-addon">week(s)</span>
+                <input [disabled]="repeatOption !== 'For'" value="1" type="number" class="form-control" id="ts-weeks" name="weeks" min="1" max="100" /><span class="input-group-addon">week(s)</span>
                 </div>
             </div>
         </div>        
 
+        <!-- Event Trash Can -->
         <div class="form-group">
             <label class="col-md-1 control-label">Drag:</label>
             <div class="col-md-11">
                 <div class="col-md-3 btn btn-primary cal-event">Free</div>
                 <div class="col-md-offset-1 col-md-3 btn btn-primary cal-event">Busy</div>
-                <a id="deleteEvent" class="btn btn-danger disabled pull-right"><i class="fa fa-trash-o fa-lg"></i> Drag events here to delete</a>
+                <a id="event-trash-can" class="btn btn-danger disabled pull-right"><i class="fa fa-trash-o fa-lg"></i> Drag events here to delete</a>
             </div>
         </div>
     </fieldset>
+
     <div id='calendar'></div>
+
 </form>
