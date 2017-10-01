@@ -1,28 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ServiceService} from '../services/services.service';
 import { PhonePipe} from '../pipes/phone.pipe';
 import { Router} from '@angular/router';
+import { IService } from './models/service';
 @Component({
   selector: 'app-root',
   templateUrl: './services.component.html'
 })
-export class ServicesComponent {
-    services = [];
+export class ServicesComponent implements OnInit {
+    services: IService[] = [];
     settings = {};
-    constructor(private serviceService:ServiceService, private router:Router){
-        
+    constructor(private serviceService: ServiceService, private router: Router) {
     }
 
     rowClick(event): void {
-       this.router.navigate(['/services/'+event.data.Id]);
+       this.router.navigate(['/services/' + event.data.Id]);
     }
 
-    ngOnInit(){
-
+    ngOnInit(): void {
         this.settings = {
             actions: false
-            ,hideSubHeader: true
-            ,columns: {
+            , hideSubHeader: true
+            , columns: {
                 Id: {
                 title: 'ID'
                 },
@@ -31,11 +30,10 @@ export class ServicesComponent {
                 }
             }
         };
-        
-        var servicesPromise = this.serviceService.list();
-        servicesPromise.then(data=>{
+
+        const servicesPromise: Promise<IService[]> = this.serviceService.list();
+        servicesPromise.then(data => {
             this.services = data;
         });
-
     }
 }

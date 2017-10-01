@@ -1,31 +1,66 @@
 import {Injectable} from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import {Event} from '../schedule/models/event';
-import {EventType} from '../schedule/models/eventType';
+import {IEvent} from '../schedule/models/event';
+import {IEventType} from '../schedule/models/eventType';
 @Injectable()
-export class ScheduleService{
-    events = [];
-    eventTypes = [];
+export class ScheduleService {
+    events: IEvent[] = [
+        {
+            id: 1,
+            title: 'Event 1',
+            start: '2016-09-01',
+            end: null,
+            hasTime: false,
+            backgroundColor: 'blue'
+        },
+        {
+            id: 2,
+            title: 'Event 2',
+            start: '2016-09-01',
+            end: '2016-09-01',
+            hasTime: false,
+            backgroundColor: 'blue'
+        },
+        {
+            id: 3,
+            title: 'Event 3',
+            start: '2016-09-03',
+            end: '2016-09-04',
+            hasTime: false,
+            backgroundColor: 'blue'
+        }
+    ];
 
-    constructor(private http: HttpClient){
-        this.events.push(new Event(1,"Event 1","2016-09-01",null,false,"blue"));
-        this.events.push(new Event(2,"Event 2","2016-09-01","2016-09-01",false,"blue"));
-        this.events.push(new Event(3,"Event 3","2016-09-03","2016-09-04",false,"blue"));
+    eventTypes: IEventType[] = [
+        {
+            Id: 1,
+            Name: 'Available'
+        },
+        {
+            Id: 2,
+            Name: 'Busy'
+        },
+        {
+            Id: 3,
+            Name: 'Class'
+        },
+        {
+            Id: 4,
+            Name: 'Session'
+        },
+    ];
 
-        this.eventTypes.push(new EventType(1,"Available"));
-        this.eventTypes.push(new EventType(2,"Busy"));
-        this.eventTypes.push(new EventType(3,"Class"));
-        this.eventTypes.push(new EventType(4,"Session"));
+    constructor(private http: HttpClient) {
     }
 
-    list():Promise<any>{
+    list(): Promise<IEvent[]> {
 
         return new Promise((resolve, reject) => {
             resolve(this.events);
         });
     }
 
-    listEventTypes():Promise<any>{
+    listEventTypes(): Promise<IEventType[]> {
 
         return new Promise((resolve, reject) => {
             resolve(this.eventTypes);

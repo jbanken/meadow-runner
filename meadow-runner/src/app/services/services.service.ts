@@ -1,27 +1,39 @@
 import {Injectable} from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { Service } from '../services/models/service';
+import { IService } from '../services/models/service';
 @Injectable()
-export class ServiceService{
-    services = [];
-    constructor(private http: HttpClient){
-        this.services.push(new Service(1,"Service 1"));
-        this.services.push(new Service(2,"Service 2"));
-        this.services.push(new Service(3,"Service 3"));
+export class ServiceService {
+    services: IService[] = [
+        {
+            Id: 1,
+            Name: 'Service 1'
+        },
+        {
+            Id: 2,
+            Name: 'Service 2'
+        },
+        {
+            Id: 3,
+            Name: 'Service 3'
+        },
+    ];
+
+    constructor(private http: HttpClient) {
     }
 
-    list():Promise<any>{
+    list(): Promise<IService[]> {
 
         return new Promise((resolve, reject) => {
             resolve(this.services);
         });
     }
 
-    get(Id):Promise<any>{
-
+    get(Id: number): Promise<IService> {
         return new Promise((resolve, reject) => {
-            var service = this.services.filter(t => t.Id == Id);
-            resolve(service);
+            const filteredService: IService[] = this.services.filter(t => t.Id === Id);
+            if (filteredService && filteredService.length) {
+                resolve(filteredService[0]);
+            }
         });
     }
 }

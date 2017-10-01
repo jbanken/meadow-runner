@@ -12,7 +12,7 @@ require('jquery-ui-touch-punch');
 })
 
 export class TrainersScheduleComponent implements OnInit, AfterViewInit {
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         $('.cal-event').each(function() {
             // store data so the calendar knows to render an event upon drop
             $(this).data('event', {
@@ -40,8 +40,8 @@ export class TrainersScheduleComponent implements OnInit, AfterViewInit {
             droppable: true, // this allows things to be dropped onto the calendar
             dragRevertDuration: 0,
             eventDragStop: ( event, jsEvent, ui, view ) => {
-                let x;
-                let y;
+                let x: number;
+                let y: number;
 
                 if (jsEvent.type === 'touchend') {
                     // x and y coordinates for touch event
@@ -61,8 +61,8 @@ export class TrainersScheduleComponent implements OnInit, AfterViewInit {
         });
     }
 
-    isEventOverDiv(x, y) {
-        const eventTrashCan = $( '#event-trash-can' );
+    isEventOverDiv(x: number, y: number): boolean {
+        const eventTrashCan = $('#event-trash-can');
         const offset = eventTrashCan.offset();
         (<any>offset).right = eventTrashCan.outerWidth() + offset.left;
         (<any>offset).bottom = eventTrashCan.outerHeight() + offset.top;
@@ -82,5 +82,5 @@ export class TrainersScheduleComponent implements OnInit, AfterViewInit {
         return false;
     }
 
-    ngOnInit() { }
+    ngOnInit(): void { }
 }

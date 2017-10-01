@@ -1,6 +1,4 @@
-export class EventType {
-  constructor(
-    public Id:number,
-    public Name: string
-) { }
+export interface IEventType {
+    Id: number;
+    Name: string;
 }

@@ -1,27 +1,40 @@
 import {Injectable} from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { Class } from '../classes/models/class';
+import { IClass } from '../classes/models/class';
 @Injectable()
-export class ClassService{
-    classes = [];
-    constructor(private http: HttpClient){
-        this.classes.push(new Class(1,"Boot Camp"));
-        this.classes.push(new Class(2,"Run Club"));
-        this.classes.push(new Class(3,"Bro-out class"));
+export class ClassService {
+    classes: IClass[] = [
+        {
+            Id: 1,
+            Name: 'Boot Camp'
+        },
+        {
+            Id: 2,
+            Name: 'Run Club'
+        },
+        {
+            Id: 3,
+            Name: 'Bro-out class'
+        }
+    ];
+
+    constructor(private http: HttpClient) {
     }
 
-    list():Promise<any>{
+    list(): Promise<IClass[]> {
 
         return new Promise((resolve, reject) => {
             resolve(this.classes);
         });
     }
 
-    get(Id):Promise<any>{
+    get(Id): Promise<IClass> {
 
         return new Promise((resolve, reject) => {
-            var classRec = this.classes.filter(t => t.Id == Id);
-            resolve(classRec);
+            const filteredClasses = this.classes.filter(t => t.Id === Id);
+            if (filteredClasses && filteredClasses.length) {
+                resolve(filteredClasses[0]);
+            }
         });
     }
 }

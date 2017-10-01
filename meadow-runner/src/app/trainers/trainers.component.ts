@@ -1,28 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TrainerService} from '../trainers/trainers.service';
 import { PhonePipe} from '../pipes/phone.pipe';
 import { Router} from '@angular/router';
+import { ITrainer } from './models/trainer';
 @Component({
   selector: 'app-root',
   templateUrl: './trainers.component.html'
 })
-export class TrainersComponent {
-    trainers = [];
+export class TrainersComponent implements OnInit {
+    trainers: ITrainer[] = [];
     settings = {};
-    constructor(private trainerService:TrainerService, private router:Router){
-        
+    constructor(private trainerService: TrainerService, private router: Router) {
     }
 
     rowClick(event): void {
-       this.router.navigate(['/trainers/'+event.data.Id]);
+       this.router.navigate(['/trainers/' + event.data.Id]);
     }
 
-    ngOnInit(){
+    ngOnInit() {
 
         this.settings = {
             actions: false
-            ,hideSubHeader: true
-            ,columns: {
+            , hideSubHeader: true
+            , columns: {
                 Id: {
                 title: 'ID'
                 },
@@ -36,13 +36,14 @@ export class TrainersComponent {
                 title: 'Email'
                 },
                 Phone: {
-                title: 'Phone'
+                title: 'Phone',
+                valuePrepareFunction: (value) => new PhonePipe().transform(value)
                 }
             }
         };
-        
-        var trainersPromise = this.trainerService.list();
-        trainersPromise.then(data=>{
+
+        const trainersPromise: Promise<ITrainer[]> = this.trainerService.list();
+        trainersPromise.then(data => {
             this.trainers = data;
         });
 

@@ -1,25 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TrainerService} from '../../trainers/trainers.service';
 import { ActivatedRoute } from '@angular/router';
-import { Trainer} from '../../trainers/models/trainer';
+import { ITrainer} from '../../trainers/models/trainer';
 @Component({
   selector: 'app-root',
   templateUrl: './trainers.show.component.html',
   styleUrls: []
 })
-export class TrainersShowComponent {
-    model:Trainer;
+export class TrainersShowComponent implements OnInit {
+    model: ITrainer;
 
-    constructor(private trainerService:TrainerService,private route: ActivatedRoute){
-        
+    constructor(private trainerService: TrainerService, private route: ActivatedRoute) {
+
     }
 
-    ngOnInit(){
-        let id = this.route.snapshot.paramMap.get('id');
-        var trainerPromise = this.trainerService.get(id);
-        trainerPromise.then(data=>{
-            this.model = data[0];
+    ngOnInit(): void {
+        const id: number = Number(this.route.snapshot.paramMap.get('id'));
+        const trainerPromise: Promise<ITrainer> = this.trainerService.get(id);
+        trainerPromise.then(data => {
+            this.model = data;
         });
-
     }
 }

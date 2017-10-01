@@ -1,11 +1,8 @@
-export class Event {
-  constructor(
-    public id:number,
-    public title: string,
-    public start: string,
-    public end: string,
-    public hasTime: boolean,
-    public backgroundColor:string
-
-) { }
+export interface IEvent {
+    id: number;
+    title: string;
+    start: string;
+    end: string;
+    hasTime: boolean;
+    backgroundColor: string;
 }
