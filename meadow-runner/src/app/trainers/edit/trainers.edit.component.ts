@@ -14,8 +14,8 @@ export class TrainersEditComponent implements OnInit {
 
     }
 
-    ngOnInit() {
-        const id = Number(this.route.snapshot.paramMap.get('id'));
+    ngOnInit(): void {
+        const id: number = Number(this.route.snapshot.paramMap.get('id'));
         if (id) {
             const trainerPromise: Promise<ITrainer> = this.trainerService.get(id);
             trainerPromise.then(data => {

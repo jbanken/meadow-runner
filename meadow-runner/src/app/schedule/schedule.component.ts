@@ -5,5 +5,5 @@ import { Component} from '@angular/core';
   templateUrl: './schedule.component.html',
  // styleUrls: ['./schedule.component.css']
 })
-export class ScheduleComponent{
+export class ScheduleComponent {
 }
