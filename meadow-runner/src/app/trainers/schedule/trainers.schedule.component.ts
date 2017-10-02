@@ -12,6 +12,8 @@ require('jquery-ui-touch-punch');
 })
 
 export class TrainersScheduleComponent implements OnInit, AfterViewInit {
+    repeatOption: string;
+
     ngAfterViewInit(): void {
         $('.cal-event').each(function() {
             // store data so the calendar knows to render an event upon drop
