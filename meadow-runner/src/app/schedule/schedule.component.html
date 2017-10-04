@@ -1,1 +1,46 @@
-<schedule-side-bar></schedule-side-bar>
+<md-sidenav-layout class="sidenav-fab-container">
+    <button class="btn-primary btn" (click)="sidenav.toggle()">
+        Filters
+    </button>
+    <angular2-fullcalendar 
+    id="myCalendar"
+    [options]="calendarOptions" 
+    (initialized)="onCalendarInit($event)" ></angular2-fullcalendar>
+    
+    <md-sidenav #sidenav mode="over" class="sidenav" align="end">
+        <h4>Trainers</h4>
+        <div class="[ form-group ]">
+            <ul class="list-unstyled">
+                <li *ngFor="let trainer of trainers">
+                    <input type="checkbox" name="trainers" id="trainer-{{trainer.Id}}" value="{{trainer.Id}}" autocomplete="off" (click)="onTrainerClicked(trainer.Id)"/>
+                    <div class="[ btn-group ]">
+                        <label for="trainer-{{trainer.Id}}" class="[ btn btn-primary ]">
+                            <span class="[ glyphicon glyphicon-ok ]"></span>
+                            <span> </span>
+                        </label>
+                        <label for="trainer-{{trainer.Id}}" class="[ btn btn-default active ]">
+                            {{trainer.FirstName}} {{trainer.LastName}}
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <h4>Types</h4>
+        <div class="[ form-group ]">
+            <ul class="list-unstyled">
+                <li *ngFor="let eventType of eventTypes">
+                    <input type="checkbox" name="eventTypes" id="eventType-{{eventType.Id}}" value="{{eventType.Id}}" autocomplete="off" (click)="onEventTypeClicked(eventType.Id)"/>
+                    <div class="[ btn-group ]">
+                        <label for="eventType-{{eventType.Id}}" class="[ btn btn-primary ]">
+                            <span class="[ glyphicon glyphicon-ok ]"></span>
+                            <span> </span>
+                        </label>
+                        <label for="eventType-{{eventType.Id}}" class="[ btn btn-default active ]">
+                            {{eventType.Name}}
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </md-sidenav>
+</md-sidenav-layout>

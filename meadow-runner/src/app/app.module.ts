@@ -8,6 +8,7 @@ import { PhonePipe} from './pipes/phone.pipe';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { CustomHttpInterceptor } from './http.interceptor';
 import 'hammerjs';
+
 import {
   //MdAutocompleteModule,
   MdButtonModule,
@@ -30,8 +31,8 @@ import {
   MdRippleModule,
   MdSelectModule,
   MdSidenavModule,
-  MdSliderModule,
-  MdSlideToggleModule,
+  //MdSliderModule,
+  //MdSlideToggleModule,
   MdSnackBarModule,
   MdTabsModule,
   MdToolbarModule,
@@ -45,7 +46,6 @@ import { HomeComponent } from './home/home.component';
 import { CalendarModule } from "ap-angular2-fullcalendar";
 import { ScheduleService } from './schedule/schedule.service';
 import { ScheduleComponent } from './schedule/schedule.component';
-import { ScheduleSideBarComponent } from './schedule/schedulesidebar.component';
 
 import { CustomersComponent } from './customers/customers.component';
 import { CustomersShowComponent } from './customers/show/customers.show.component';
@@ -97,7 +97,6 @@ const appRoutes: Routes = [
     , CustomersShowComponent
     , CustomersEditComponent
     , ScheduleComponent
-    , ScheduleSideBarComponent
     , PhonePipe
     , TrainersComponent
     , TrainersShowComponent
@@ -151,8 +150,8 @@ const appRoutes: Routes = [
     MdRippleModule,
     MdSelectModule,
     MdSidenavModule,
-    MdSlideToggleModule,
-    MdSliderModule,
+    //MdSlideToggleModule,
+    //MdSliderModule,
     MdSnackBarModule,
     MdTabsModule,
     MdToolbarModule,
@@ -160,7 +159,7 @@ const appRoutes: Routes = [
     MaterialModule
     //MdNativeDateModule
     ],
-  bootstrap: [AppComponent,ScheduleSideBarComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
 
