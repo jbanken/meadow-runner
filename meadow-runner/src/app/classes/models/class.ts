@@ -1,5 +1,4 @@
-export class Class {
-  constructor(
-    public Id: number,
-    public Name: string) { }
+export interface IClass {
+    Id: number;
+    Name: string;
 }

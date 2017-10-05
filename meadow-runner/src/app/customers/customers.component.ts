@@ -1,29 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CustomerService} from '../customers/customers.service';
 import { PhonePipe} from '../pipes/phone.pipe';
 import { Router} from '@angular/router';
+import { ICustomer } from './models/customer';
 @Component({
   selector: 'app-root',
   templateUrl: './customers.component.html',
   styleUrls: ['./customers.component.css']
 })
-export class CustomersComponent {
-    customers = [];
+export class CustomersComponent implements OnInit {
+    customers: ICustomer[] = [];
     settings = {};
-    constructor(private customerService:CustomerService, private router:Router){
-        
+    constructor(private customerService: CustomerService, private router: Router) {
     }
 
     rowClick(event): void {
-       this.router.navigate(['/customers/'+event.data.Id]);
+       this.router.navigate(['/customers/' + event.data.Id]);
     }
 
-    ngOnInit(){
-
+    ngOnInit(): void {
         this.settings = {
             actions: false
-            ,hideSubHeader: true
-            ,columns: {
+            , hideSubHeader: true
+            , columns: {
                 Id: {
                 title: 'ID'
                 },
@@ -37,13 +36,14 @@ export class CustomersComponent {
                 title: 'Email'
                 },
                 Phone: {
-                title: 'Phone'
+                title: 'Phone',
+                valuePrepareFunction: (value) => new PhonePipe().transform(value)
                 }
             }
         };
-        
-        var customersPromise = this.customerService.list();
-        customersPromise.then(data=>{
+
+        const customersPromise: Promise<ICustomer[]> = this.customerService.list();
+        customersPromise.then(data => {
             this.customers = data;
         });
 

@@ -2,8 +2,8 @@ import { Component , ViewEncapsulation} from '@angular/core';
 import {CalendarComponent} from 'ap-angular2-fullcalendar';
 import {ScheduleService} from '../schedule/schedule.service';
 import {TrainerService} from '../trainers/trainers.service';
-import {Event} from '../schedule/models/event';
-import {EventType} from '../schedule/models/eventType';
+import {IEvent} from '../schedule/models/event';
+import {IEventType} from '../schedule/models/eventType';
 import * as $ from 'jquery';
 
 @Component({
@@ -57,23 +57,21 @@ calendarOptions:any;
 
   onTrainerClicked(trainerID:number){
     console.log('Trainer Clicked');
-    let events = [];
-    let checked = $('#trainer-'+trainerID+':checkbox:checked').length >= 1 ? true :false;//todo don't use jquery;
+    const events: IEvent[] = [];
+    const checked = $('#trainer-' + trainerID + ':checkbox:checked').length >= 1 ? true : false; // todo don't use jquery;
 
-    if(checked){
-      if(trainerID == 1){
-          events.push(new Event(101,"Joe Available","2016-09-05",null,false,"green"));
-          events.push(new Event(102,"Joe Available","2016-09-07",null,false,"green"));
-          events.push(new Event(103,"Joe Available","2016-09-09",null,false,"green"));
-      }else if (trainerID == 2){
-          events.push(new Event(201,"Mark Available","2016-09-06",null,false,"green"));
-          events.push(new Event(202,"Mark Available","2016-09-08",null,false,"green"));
-      }else if (trainerID == 3){
-          events.push(new Event(301,"Mike Available","2016-09-05",null,false,"green"));
-          events.push(new Event(302,"Mike Available","2016-09-06",null,false,"green"));
+    if (checked) {
+      if (trainerID === 1) {
+          events.push({id: 101, title: 'Joe Available', start: '2016-09-05', end: null, hasTime: false, backgroundColor: 'green'});
+          events.push({id: 102, title: 'Joe Available', start: '2016-09-07', end: null, hasTime: false, backgroundColor: 'green'});
+          events.push({id: 103, title: 'Joe Available', start: '2016-09-09', end: null, hasTime: false, backgroundColor: 'green'});
+      }else if (trainerID === 2) {
+          events.push({id: 201, title: 'Mark Available', start: '2016-09-06', end: null, hasTime: false, backgroundColor: 'green'});
+          events.push({id: 202, title: 'Mark Available', start: '2016-09-08', end: null, hasTime: false, backgroundColor: 'green'});
+      }else if (trainerID === 3) {
+          events.push({id: 301, title: 'Mike Available', start: '2016-09-05', end: null, hasTime: false, backgroundColor: 'green'});
+          events.push({id: 302, title: 'Mike Available', start: '2016-09-06', end: null, hasTime: false, backgroundColor: 'green'});
       }
-      this.calendarOptions.events = events;
-      $('#myCalendar').fullCalendar('renderEvents', events, true);
     }else{
       if(trainerID == 1){
         $('#myCalendar').fullCalendar('removeEvents',101);

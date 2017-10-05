@@ -1,5 +1,5 @@
 
-<form #serviceForm = "ngForm" (ngSubmit)="onSubmit(serviceForm.value)">
+<form #serviceForm = "ngForm" (ngSubmit)="onSubmit(serviceForm.value)" *ngIf="model">
 
     <div class="form-group">
         <label for="id" i18n>ID</label>
