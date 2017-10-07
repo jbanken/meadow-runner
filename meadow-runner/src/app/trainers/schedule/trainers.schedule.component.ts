@@ -65,6 +65,7 @@ export class TrainersScheduleComponent implements OnInit, AfterViewInit {
     }
 
     isEventOverDiv(x: number, y: number): boolean {
+        alert('isEventOverDiv');
         const eventTrashCan = $('#event-trash-can');
         const offset = eventTrashCan.offset();
         (<any>offset).right = eventTrashCan.outerWidth() + offset.left;
@@ -73,6 +74,13 @@ export class TrainersScheduleComponent implements OnInit, AfterViewInit {
         // Adjust for scrolling
         x = x + window.scrollX;
         y = y + window.scrollY;
+
+        alert(`x = ${x}
+                y = ${y}
+                left = ${offset.left}
+                top = ${offset.top}
+                right = ${(<any>offset).right}
+                bottom = ${(<any>offset).bottom}`);
 
         // Are the coordinates of where the event was dropped in the event trash can?
         if (x >= offset.left
