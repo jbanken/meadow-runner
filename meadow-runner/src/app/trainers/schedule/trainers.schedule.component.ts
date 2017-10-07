@@ -42,6 +42,7 @@ export class TrainersScheduleComponent implements OnInit, AfterViewInit {
             droppable: true, // this allows things to be dropped onto the calendar
             dragRevertDuration: 0,
             eventDragStop: ( event, jsEvent, ui, view ) => {
+                alert('eventDragStop x=' + jsEvent.clientX + ' y=' + jsEvent.clientY);
                 let x: number;
                 let y: number;
 
