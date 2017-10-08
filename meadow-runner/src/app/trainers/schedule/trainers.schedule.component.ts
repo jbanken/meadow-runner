@@ -42,7 +42,6 @@ export class TrainersScheduleComponent implements OnInit, AfterViewInit {
             droppable: true, // this allows things to be dropped onto the calendar
             dragRevertDuration: 0,
             eventDragStop: ( event, jsEvent, ui, view ) => {
-                alert('eventDragStop x=' + jsEvent.clientX + ' y=' + jsEvent.clientY);
                 let x: number;
                 let y: number;
 
@@ -57,6 +56,8 @@ export class TrainersScheduleComponent implements OnInit, AfterViewInit {
                 }
 
                 if (this.isEventOverDiv(x, y)) {
+                    alert(`$('#calendar').fullCalendar: ${$('#calendar').fullCalendar}`);
+                    alert(`In removing event with event._id ${event._id}`);
                     // Remove the event from the calendar if it is thrown in the event trash can
                     $('#calendar').fullCalendar('removeEvents', event._id);
                 }
@@ -65,7 +66,6 @@ export class TrainersScheduleComponent implements OnInit, AfterViewInit {
     }
 
     isEventOverDiv(x: number, y: number): boolean {
-        alert('isEventOverDiv');
         const eventTrashCan = $('#event-trash-can');
         const offset = eventTrashCan.offset();
         (<any>offset).right = eventTrashCan.outerWidth() + offset.left;
