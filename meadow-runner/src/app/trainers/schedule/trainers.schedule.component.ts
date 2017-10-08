@@ -56,9 +56,7 @@ export class TrainersScheduleComponent implements OnInit, AfterViewInit {
                 }
 
                 if (this.isEventOverDiv(x, y)) {
-                    alert(`In removing event with event._id ${event._id}`);
                     // Remove the event from the calendar if it is thrown in the event trash can
-                    // $('#calendar').fullCalendar('removeEvents', event._id);
                     $('#calendar').fullCalendar('removeEvents', function(calEvent)  {
                         return true;
                     });
@@ -76,13 +74,6 @@ export class TrainersScheduleComponent implements OnInit, AfterViewInit {
         // Adjust for scrolling
         x = x + window.scrollX;
         y = y + window.scrollY;
-
-        alert(`x = ${x}
-                y = ${y}
-                left = ${offset.left}
-                top = ${offset.top}
-                right = ${(<any>offset).right}
-                bottom = ${(<any>offset).bottom}`);
 
         // Are the coordinates of where the event was dropped in the event trash can?
         if (x >= offset.left
