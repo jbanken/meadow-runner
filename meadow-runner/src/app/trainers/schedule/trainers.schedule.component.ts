@@ -56,10 +56,12 @@ export class TrainersScheduleComponent implements OnInit, AfterViewInit {
                 }
 
                 if (this.isEventOverDiv(x, y)) {
-                    alert(`$('#calendar').fullCalendar: ${$('#calendar').fullCalendar}`);
                     alert(`In removing event with event._id ${event._id}`);
                     // Remove the event from the calendar if it is thrown in the event trash can
-                    $('#calendar').fullCalendar('removeEvents', event._id);
+                    // $('#calendar').fullCalendar('removeEvents', event._id);
+                    $('#calendar').fullCalendar('removeEvents', function(calEvent)  {
+                        return true;
+                    });
                 }
             }
         });
