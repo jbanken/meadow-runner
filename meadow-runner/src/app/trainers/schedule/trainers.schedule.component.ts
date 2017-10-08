@@ -59,7 +59,6 @@ export class TrainersScheduleComponent implements OnInit, AfterViewInit {
                     // Remove the event from the calendar if it is thrown in the event trash can
                     // $('#calendar').fullCalendar('removeEvents', event._id);
                     $('#calendar').fullCalendar('removeEvents', function(calEvent)  {
-                        alert(`Title = ${calEvent.title} calEvent._id = ${calEvent._id}  event._id = ${event._id}`);
                         return calEvent._id === event._id;
                     });
                 }
